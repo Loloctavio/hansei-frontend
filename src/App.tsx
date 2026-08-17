@@ -36,7 +36,7 @@ function Sesion() {
   const { cargando, error, recargar } = useKaizen()
 
   useEffect(() => {
-    document.title = `${TITULOS[seccion]} · Kaizen Tracker`
+    document.title = `${TITULOS[seccion]} · Hansei`
   }, [seccion])
 
   return (

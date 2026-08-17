@@ -155,7 +155,7 @@ export function ProveedorKaizen({ children }: { children: ReactNode }) {
           throw new Error('Ese archivo no es JSON válido.')
         }
         if (!crudo || typeof crudo !== 'object' || !Array.isArray((crudo as Datos).objetivos)) {
-          throw new Error('El archivo no tiene el formato de Kaizen Tracker.')
+          throw new Error('El archivo no tiene el formato de Hansei.')
         }
         setDatos(copia(await repo.reemplazarTodo(crudo as Datos)))
       }),

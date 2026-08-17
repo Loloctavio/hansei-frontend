@@ -21,10 +21,10 @@ export function Rail({ seccion, ir }: Props) {
     <nav className="rail" aria-label="Secciones">
       <div className="marca">
         <span className="marca__kanji" aria-hidden="true">
-          改善
+          反省
         </span>
         <h1 className="marca__texto">
-          Kaizen Tracker
+          Hansei
           <span className="marca__pie">Un 1% al día</span>
         </h1>
       </div>

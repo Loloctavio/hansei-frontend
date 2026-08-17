@@ -1,9 +1,9 @@
 {
-  "name": "kaizen-frontend",
+  "name": "hansei-frontend",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Frontend del Kaizen Tracker. Seguimiento de habitos por pasos minimos, sellos diarios y revision semanal.",
+  "description": "Frontend de Hansei. Seguimiento de habitos por pasos minimos, sellos diarios y revision semanal.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

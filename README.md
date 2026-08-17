@@ -1,7 +1,16 @@
-# Kaizen Tracker — frontend
+# Hansei — frontend
 
 Seguimiento de hábitos con el método kaizen: pasos mínimos, sellos diarios y una
 revisión semanal que propone achicar el paso cuando la consistencia baja.
+
+El nombre viene del *hansei*, el cierre de semana que la app pone en el centro:
+mirar lo que pasó sin castigarse y decidir un solo ajuste para la semana
+siguiente.
+
+> **Nota sobre las claves de almacenamiento.** Siguen siendo `kaizen:datos`,
+> `kaizen:perfil` y `kaizen:token`, y no se renombraron a propósito: cambiarlas
+> dejaría huérfanos los datos de quien ya use la app. Son internas y no se ven
+> en ninguna pantalla.
 
 Este repo es **solo el frontend**. El backend vive aparte; el contrato entre los
 dos está en [API.md](API.md).

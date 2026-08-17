@@ -45,9 +45,9 @@ export function PantallaAcceso() {
       <section className="acceso__caja">
         <div className="acceso__marca">
           <span className="acceso__kanji" aria-hidden="true">
-            改善
+            反省
           </span>
-          <h1 className="acceso__titulo">Kaizen Tracker</h1>
+          <h1 className="acceso__titulo">Hansei</h1>
           <p className="acceso__lema">Un 1% al día</p>
         </div>
 

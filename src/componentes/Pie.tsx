@@ -17,7 +17,7 @@ export function Pie() {
     const url = URL.createObjectURL(new Blob([exportar()], { type: 'application/json' }))
     const enlace = document.createElement('a')
     enlace.href = url
-    enlace.download = `kaizen-${claveHoy()}.json`
+    enlace.download = `hansei-${claveHoy()}.json`
     document.body.appendChild(enlace)
     enlace.click()
     document.body.removeChild(enlace)

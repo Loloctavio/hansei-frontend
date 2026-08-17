@@ -1,0 +1,32 @@
+{
+  "name": "Kaizen Tracker",
+  "short_name": "Kaizen",
+  "description": "Seguimiento de hábitos por pasos mínimos: sellos diarios y una revisión semanal.",
+  "lang": "es",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#E6EBE9",
+  "theme_color": "#C8402B",
+  "icons": [
+    {
+      "src": "/icono.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/icono-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icono-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

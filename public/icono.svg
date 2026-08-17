@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Kaizen Tracker">
+  <title>Kaizen Tracker</title>
+
+  <!--
+    El sello hanko de la app, reducido a lo que sobrevive a 16 pixeles.
+
+    No lleva el glifo 改 a proposito: un favicon no puede depender de una fuente
+    externa (Google Fonts no carga aqui), y sin fuente CJK el navegador pinta un
+    cuadro vacio. A 16px, ademas, siete trazos son una mancha.
+
+    En su lugar van tres celdas ascendentes, unidas esquina con esquina: son las
+    mismas celdas del mapa de 53 semanas y de la tira de la semana. Dicen
+    acumulacion, que es de lo que trata el producto, y a 16px siguen siendo tres
+    puntos claros sobre tinta bermellon.
+  -->
+
+  <defs>
+    <!-- Papel cuadriculado de taller. A tamano chico desaparece sin estorbar. -->
+    <pattern id="cuadricula" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#16201E" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+
+    <!-- La tinta nunca se deposita pareja: mas densa en el borde del sello. -->
+    <radialGradient id="tinta" cx="50%" cy="44%" r="64%">
+      <stop offset="0%" stop-color="#D24E35"/>
+      <stop offset="62%" stop-color="#C8402B"/>
+      <stop offset="100%" stop-color="#9E2E1D"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="512" height="512" fill="#E6EBE9"/>
+  <rect width="512" height="512" fill="url(#cuadricula)"/>
+
+  <!-- Contorno irregular y giro corto: una impresion de hanko nunca sale
+       perfectamente redonda ni perfectamente recta. -->
+  <g transform="rotate(-3 256 256)">
+    <path fill="url(#tinta)"
+          d="M258 58
+             C372 54 458 148 454 258
+             C450 370 366 458 254 454
+             C144 450 58 364 62 254
+             C66 146 148 62 258 58 Z"/>
+  </g>
+
+  <!-- Tres celdas ascendentes, tocandose en las esquinas: la cadena de dias.
+       Van holgadas dentro del sello: si el cuadro de una punta toca el borde,
+       se funde con el papel y la silueta del sello se rompe. -->
+  <g fill="#F6F8F7">
+    <rect x="136" y="296" width="80" height="80" rx="6"/>
+    <rect x="216" y="216" width="80" height="80" rx="6"/>
+    <rect x="296" y="136" width="80" height="80" rx="6"/>
+  </g>
+</svg>

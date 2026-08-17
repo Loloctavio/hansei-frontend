@@ -7,11 +7,12 @@
  */
 
 import { useState } from 'react'
+import type { Ruta } from '@/lib/rutas'
 import { useAuth } from './contexto'
 
 type Modo = 'entrar' | 'registrar'
 
-export function PantallaAcceso() {
+export function PantallaAcceso({ ir }: { ir: (destino: Ruta) => void }) {
   const { entrar, registrar, enviando, error, remoto, limpiarError } = useAuth()
   const [modo, setModo] = useState<Modo>('entrar')
   const [nombre, setNombre] = useState('')
@@ -144,6 +145,22 @@ export function PantallaAcceso() {
             validar. Al conectar el backend, esta pantalla pedirá correo y contraseña.
           </p>
         )}
+
+        <p className="acceso__legal">
+          Al continuar aceptas los{' '}
+          <button type="button" className="enlace" onClick={() => ir('terminos')}>
+            términos y condiciones
+          </button>{' '}
+          y el{' '}
+          <button type="button" className="enlace" onClick={() => ir('privacidad')}>
+            aviso de privacidad
+          </button>
+          .
+        </p>
+
+        <button type="button" className="boton boton--texto" onClick={() => ir('landing')}>
+          ← Volver al inicio
+        </button>
       </section>
     </main>
   )

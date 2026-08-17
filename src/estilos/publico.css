@@ -1,0 +1,343 @@
+/* publico.css — landing y documentos legales.
+ *
+ * Misma paleta y mismos tokens que la app: quien llega desde la landing no
+ * debe sentir que cambió de producto al entrar.
+ */
+
+.publico {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- barra superior ---------- */
+
+.publico__barra {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--u) * 4);
+  padding: calc(var(--u) * 4) calc(var(--u) * 8);
+  border-bottom: 1px solid var(--borde);
+  background: rgba(246, 248, 247, 0.94);
+  backdrop-filter: blur(4px);
+}
+
+.publico__logo {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--u) * 2.5);
+  min-width: 0;
+}
+
+.publico__logo-kanji {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 19px;
+  letter-spacing: 0.06em;
+  color: var(--shu);
+  line-height: 1;
+}
+
+.publico__logo-texto {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.publico__cuerpo {
+  flex: 1;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: calc(var(--u) * 14) calc(var(--u) * 8) calc(var(--u) * 12);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 18);
+}
+
+/* ---------- portada ---------- */
+
+.portada__titulo {
+  font-size: clamp(34px, 6.2vw, 60px);
+  margin-top: calc(var(--u) * 3);
+  max-width: 18ch;
+}
+
+.portada__texto {
+  margin-top: calc(var(--u) * 5);
+  max-width: 54ch;
+  font-size: 17px;
+  color: var(--sumi-medio);
+}
+
+.portada__acciones {
+  margin-top: calc(var(--u) * 8);
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--u) * 3);
+}
+
+/* El ancla de "Cómo funciona" es un <a>, no un <button>: hay que igualarlo. */
+.portada__acciones a.boton {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ---------- secciones ---------- */
+
+.publico__seccion {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 6);
+  scroll-margin-top: calc(var(--u) * 24);
+}
+
+.publico__titulo {
+  font-size: clamp(22px, 3.2vw, 30px);
+}
+
+.pilares {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: calc(var(--u) * 4);
+}
+
+.pilar {
+  background-color: var(--papel-alto);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: calc(var(--u) * 6) calc(var(--u) * 5);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 2);
+}
+
+.pilar__kanji {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--shu);
+  margin-bottom: calc(var(--u) * 2);
+}
+
+.pilar__titulo {
+  font-size: 17px;
+}
+
+.pilar__texto {
+  font-size: 14px;
+  color: var(--sumi-medio);
+}
+
+.contrastes {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 5);
+}
+
+.contraste {
+  border-left: 2px solid var(--shu);
+  padding-left: calc(var(--u) * 4);
+}
+
+.contraste__titulo {
+  font-size: 17px;
+}
+
+.contraste__texto {
+  margin-top: calc(var(--u) * 1.5);
+  color: var(--sumi-medio);
+  max-width: 62ch;
+}
+
+.cierre {
+  border-top: 1px solid var(--borde);
+  padding-top: calc(var(--u) * 10);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(var(--u) * 6);
+}
+
+.cierre__cita {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(19px, 2.6vw, 24px);
+  line-height: 1.4;
+  max-width: 34ch;
+}
+
+/* ---------- documentos legales ---------- */
+
+.documento {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 8);
+}
+
+.documento__cuerpo {
+  max-width: 68ch;
+}
+
+.documento__titulo {
+  font-size: clamp(26px, 4vw, 36px);
+}
+
+.documento__fecha {
+  margin-top: calc(var(--u) * 3);
+  font-family: var(--dato);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sumi-suave);
+}
+
+.documento__intro {
+  margin-top: calc(var(--u) * 8);
+  font-size: 16px;
+  color: var(--sumi-medio);
+  border-left: 2px solid var(--shu);
+  padding-left: calc(var(--u) * 4);
+}
+
+.documento__cuerpo h2 {
+  font-size: 18px;
+  margin-top: calc(var(--u) * 10);
+}
+
+.documento__cuerpo p {
+  margin-top: calc(var(--u) * 3);
+  color: var(--sumi-medio);
+}
+
+.documento__cuerpo ul {
+  margin: calc(var(--u) * 3) 0 0;
+  padding-left: calc(var(--u) * 5);
+  color: var(--sumi-medio);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 1.5);
+}
+
+.documento__cuerpo strong {
+  color: var(--sumi);
+  font-weight: 700;
+}
+
+/* Los pendientes de marca.ts se ven de inmediato si se escapan a produccion. */
+.documento__dato {
+  font-family: var(--dato);
+  font-size: 0.92em;
+  color: var(--sumi);
+  background-color: var(--shu-velo);
+  padding: 1px calc(var(--u) * 1.5);
+  border-radius: 2px;
+}
+
+/* ---------- enlace en linea ---------- */
+
+.enlace {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: var(--sumi);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--borde);
+  transition: text-decoration-color var(--transicion);
+}
+
+.enlace:hover {
+  text-decoration-color: var(--shu);
+}
+
+/* ---------- pie publico ---------- */
+
+.publico__pie {
+  border-top: 1px solid var(--borde);
+  padding: calc(var(--u) * 8);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: calc(var(--u) * 4);
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.publico__pie-empresa {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.publico__pie-credito {
+  margin-top: calc(var(--u) * 1);
+  font-family: var(--dato);
+  font-size: 11px;
+  color: var(--sumi-suave);
+}
+
+.publico__pie-enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--u) * 3);
+}
+
+/* ---------- linea legal en el pie de la app ---------- */
+
+.pie__legal {
+  margin-top: calc(var(--u) * 3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--u) * 3);
+  font-family: var(--dato);
+  font-size: 10px;
+  color: var(--sumi-suave);
+}
+
+.pie__legal .enlace {
+  font-size: 10px;
+  color: var(--sumi-suave);
+}
+
+/* ---------- acceso: enlaces añadidos ---------- */
+
+.acceso__legal {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--sumi-suave);
+}
+
+.acceso__legal .enlace {
+  color: var(--sumi-medio);
+}
+
+/* ---------- pantallas chicas ---------- */
+
+@media (max-width: 700px) {
+  .publico__barra {
+    padding: calc(var(--u) * 3) calc(var(--u) * 4);
+  }
+
+  .publico__cuerpo {
+    padding: calc(var(--u) * 9) calc(var(--u) * 4) calc(var(--u) * 10);
+    gap: calc(var(--u) * 12);
+  }
+
+  .publico__pie {
+    padding: calc(var(--u) * 6) calc(var(--u) * 4);
+  }
+}

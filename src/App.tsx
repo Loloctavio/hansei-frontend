@@ -1,11 +1,15 @@
 /* App.tsx — armazón y decisión de qué se muestra.
  *
- * Tres estados posibles: resolviendo la sesión, sin sesión (puerta), o dentro.
- * El proveedor de datos solo se monta cuando hay usuario, así que en modo api
- * nunca se dispara una petición sin token.
+ * Cuatro estados: resolviendo la sesión, documento legal (accesible con y sin
+ * sesión), zona pública (landing o acceso), o la app.
+ *
+ * Los legales van primero en el orden de decisión a propósito: un usuario con
+ * sesión debe poder releer los términos sin cerrarla, y uno sin sesión debe
+ * poder leerlos sin crear cuenta.
  */
 
 import { useEffect } from 'react'
+import { MARCA } from '@/marca'
 import { useAuth } from '@/auth/contexto'
 import { PantallaAcceso } from '@/auth/PantallaAcceso'
 import { ProveedorKaizen } from '@/estado/ProveedorKaizen'
@@ -16,8 +20,11 @@ import { Hoy } from '@/secciones/Hoy'
 import { Objetivos } from '@/secciones/Objetivos'
 import { Progreso } from '@/secciones/Progreso'
 import { Revision } from '@/secciones/Revision'
-import { useRuta } from '@/lib/rutas'
-import { TITULOS } from '@/lib/rutas'
+import { Landing } from '@/publico/Landing'
+import { Terminos } from '@/publico/Terminos'
+import { Privacidad } from '@/publico/Privacidad'
+import { esLegal, esSeccion, TITULOS, useRuta } from '@/lib/rutas'
+import type { Ruta, Seccion } from '@/lib/rutas'
 
 function Cargando({ texto }: { texto: string }) {
   return (
@@ -31,13 +38,8 @@ function Cargando({ texto }: { texto: string }) {
 }
 
 /** El interior de la app: rail, sección activa y pie. */
-function Sesion() {
-  const { seccion, ir } = useRuta()
+function Sesion({ seccion, ir }: { seccion: Seccion; ir: (destino: Ruta) => void }) {
   const { cargando, error, recargar } = useKaizen()
-
-  useEffect(() => {
-    document.title = `${TITULOS[seccion]} · Hansei`
-  }, [seccion])
 
   return (
     <div className="armazon">
@@ -67,7 +69,7 @@ function Sesion() {
             </div>
           )}
         </div>
-        <Pie />
+        <Pie ir={ir} />
       </main>
     </div>
   )
@@ -75,13 +77,37 @@ function Sesion() {
 
 export function App() {
   const { usuario, cargando } = useAuth()
+  const { ruta, ir } = useRuta()
+
+  useEffect(() => {
+    document.title =
+      ruta === 'landing' ? `${MARCA.nombre} — ${MARCA.lema}` : `${TITULOS[ruta]} · ${MARCA.nombre}`
+  }, [ruta])
+
+  // Con sesión abierta, la landing y el acceso ya no tienen nada que ofrecer.
+  useEffect(() => {
+    if (usuario && (ruta === 'landing' || ruta === 'acceso')) ir('hoy')
+  }, [usuario, ruta, ir])
 
   if (cargando) return <Cargando texto="Comprobando tu sesión…" />
-  if (!usuario) return <PantallaAcceso />
+
+  if (esLegal(ruta)) {
+    const volverA: Ruta = usuario ? 'hoy' : 'landing'
+    const volverTexto = usuario ? 'Volver a la app' : 'Volver'
+    return ruta === 'terminos' ? (
+      <Terminos ir={ir} volverA={volverA} volverTexto={volverTexto} />
+    ) : (
+      <Privacidad ir={ir} volverA={volverA} volverTexto={volverTexto} />
+    )
+  }
+
+  if (!usuario) {
+    return ruta === 'acceso' ? <PantallaAcceso ir={ir} /> : <Landing ir={ir} />
+  }
 
   return (
     <ProveedorKaizen>
-      <Sesion />
+      <Sesion seccion={esSeccion(ruta) ? ruta : 'hoy'} ir={ir} />
     </ProveedorKaizen>
   )
 }

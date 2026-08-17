@@ -7,6 +7,7 @@ import '@/estilos/base.css'
 import '@/estilos/layout.css'
 import '@/estilos/componentes.css'
 import '@/estilos/acceso.css'
+import '@/estilos/publico.css'
 
 import { ProveedorAuth } from '@/auth/ProveedorAuth'
 import { App } from '@/App'

@@ -8,8 +8,10 @@
 import { useRef } from 'react'
 import { useKaizen } from '@/estado/contexto'
 import { claveHoy } from '@/lib/fechas'
+import { MARCA } from '@/marca'
+import type { Ruta } from '@/lib/rutas'
 
-export function Pie() {
+export function Pie({ ir }: { ir: (destino: Ruta) => void }) {
   const { etiquetaAlmacen, aviso, exportar, importar, avisar } = useKaizen()
   const entrada = useRef<HTMLInputElement>(null)
 
@@ -64,6 +66,18 @@ export function Pie() {
             }}
           />
         </div>
+      </div>
+
+      <div className="pie__legal">
+        <span>
+          {MARCA.empresa} · {MARCA.desarrollador}
+        </span>
+        <button type="button" className="enlace" onClick={() => ir('terminos')}>
+          Términos
+        </button>
+        <button type="button" className="enlace" onClick={() => ir('privacidad')}>
+          Privacidad
+        </button>
       </div>
     </footer>
   )

@@ -18,8 +18,7 @@ export const MARCA = {
   empresa: 'HayAI Labs',
   desarrollador: 'Octavio Fonseca',
 
-  /** PENDIENTE: correo real de contacto de HayAI Labs. */
-  contacto: '«contacto@hayailabs.com»',
+  contacto: 'productos@evilpiglabs.com',
 
   /** PENDIENTE: domicilio fiscal. La LFPDPPP lo exige en el aviso de privacidad. */
   domicilio: '«domicilio fiscal de HayAI Labs»',

@@ -1,8 +1,12 @@
 /* Landing.tsx — la primera pantalla, antes del acceso.
  *
- * No vende rachas ni intensidad, que es lo que vende la categoría entera.
- * Vende lo contrario, que es lo único que esta app hace distinto: cuando fallas
- * seguido, el problema es el tamaño del paso, no tu voluntad.
+ * No vende rachas ni intensidad: vende que el paso quepa en tu peor día, que es
+ * lo único que esta app hace distinto. Cuando fallas seguido, el problema es el
+ * tamaño del paso, no tu voluntad.
+ *
+ * Las secciones describen lo que la app hace, en concreto. Nada de definirse
+ * por lo que otras apps supuestamente hacen mal: es una promesa sobre un rival
+ * imaginario, y el visitante no tiene forma de comprobarla.
  */
 
 import { MARCA } from '@/marca'
@@ -30,21 +34,21 @@ const PILARES = [
   },
 ]
 
-const CONTRASTES = [
+const RASGOS = [
   {
-    titulo: 'No te castiga por romper la racha',
+    titulo: 'El seguimiento cabe en un vistazo',
     texto:
-      'El día en curso nunca rompe una racha, y la semana en curso tampoco. Una racha perdida no es un fracaso que haya que exhibir.',
+      'Un sello por día sobre una cuadrícula que cubre el año entero. Las rachas, la consistencia y los totales se calculan solos: no hay que llevar la cuenta a mano.',
   },
   {
-    titulo: 'No te pide más voluntad',
+    titulo: 'Hay espacio para escribir el día',
     texto:
-      'Cuando la consistencia baja, la app no sube el tono: propone bajar el listón. Un hábito que sobrevive a tus peores semanas vale más que uno intenso que dura doce días.',
+      'Dos líneas al cerrar: qué mejoraste y qué te frenó. Con el tiempo, los obstáculos que se repiten se vuelven visibles, y ahí suele estar la siguiente mejora.',
   },
   {
-    titulo: 'No secuestra tus datos',
+    titulo: 'Tus datos salen en un archivo',
     texto:
-      'Todo tu historial se exporta a un archivo con un clic, y se vuelve a importar igual de fácil. Una app que guarda años de tus hábitos no debería retenerlos.',
+      'Todo tu historial se exporta con un clic y se vuelve a importar igual de fácil. Sirve para cambiar de dispositivo, guardar un respaldo o llevarte los años que ya registraste.',
   },
 ]
 
@@ -100,12 +104,12 @@ export function Landing({ ir }: { ir: (destino: Ruta) => void }) {
         </section>
 
         <section className="publico__seccion">
-          <h2 className="publico__titulo">En qué se diferencia</h2>
-          <div className="contrastes">
-            {CONTRASTES.map((c) => (
-              <article key={c.titulo} className="contraste">
-                <h3 className="contraste__titulo">{c.titulo}</h3>
-                <p className="contraste__texto">{c.texto}</p>
+          <h2 className="publico__titulo">Lo que hay dentro</h2>
+          <div className="rasgos">
+            {RASGOS.map((r) => (
+              <article key={r.titulo} className="rasgo">
+                <h3 className="rasgo__titulo">{r.titulo}</h3>
+                <p className="rasgo__texto">{r.texto}</p>
               </article>
             ))}
           </div>
@@ -114,7 +118,7 @@ export function Landing({ ir }: { ir: (destino: Ruta) => void }) {
         <section className="cierre">
           <p className="cierre__cita">
             改善 — kaizen: mejora continua. Un uno por ciento al día, sostenido, supera a
-            cualquier arranque heroico que no llega a marzo.
+            cualquier arranque heroico.
           </p>
           <button
             type="button"

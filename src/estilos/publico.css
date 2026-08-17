@@ -137,22 +137,22 @@
   color: var(--sumi-medio);
 }
 
-.contrastes {
+.rasgos {
   display: flex;
   flex-direction: column;
   gap: calc(var(--u) * 5);
 }
 
-.contraste {
+.rasgo {
   border-left: 2px solid var(--shu);
   padding-left: calc(var(--u) * 4);
 }
 
-.contraste__titulo {
+.rasgo__titulo {
   font-size: 17px;
 }
 
-.contraste__texto {
+.rasgo__texto {
   margin-top: calc(var(--u) * 1.5);
   color: var(--sumi-medio);
   max-width: 62ch;

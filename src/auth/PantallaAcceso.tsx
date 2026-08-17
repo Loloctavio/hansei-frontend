@@ -91,7 +91,7 @@ export function PantallaAcceso({ ir }: { ir: (destino: Ruta) => void }) {
                 value={nombre}
                 maxLength={60}
                 autoComplete="name"
-                placeholder="Octavio"
+                placeholder="Tu nombre"
                 onChange={(e) => setNombre(e.target.value)}
               />
             </label>

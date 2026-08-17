@@ -1,0 +1,77 @@
+/* acceso.css — la puerta.
+ *
+ * Una sola tarjeta centrada sobre el papel cuadriculado. Es la primera cosa
+ * que ve alguien, así que el sello aparece antes que cualquier campo.
+ */
+
+.acceso {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: calc(var(--u) * 6);
+}
+
+.acceso__caja {
+  width: 100%;
+  max-width: 396px;
+  background-color: var(--papel-alto);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: calc(var(--u) * 8) calc(var(--u) * 7);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 5);
+}
+
+.acceso__marca {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(var(--u) * 1);
+}
+
+.acceso__kanji {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: 0.06em;
+  color: var(--shu);
+  line-height: 1;
+  margin-bottom: calc(var(--u) * 2);
+}
+
+.acceso__titulo {
+  font-size: 24px;
+}
+
+.acceso__lema {
+  font-family: var(--dato);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sumi-suave);
+}
+
+.acceso__form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 4);
+}
+
+.acceso__form .boton--primario {
+  margin-top: calc(var(--u) * 1);
+}
+
+.acceso__nota {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--sumi-suave);
+  border-top: 1px solid var(--borde);
+  padding-top: calc(var(--u) * 4);
+}
+
+@media (max-width: 420px) {
+  .acceso__caja {
+    padding: calc(var(--u) * 6) calc(var(--u) * 5);
+  }
+}

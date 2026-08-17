@@ -1,0 +1,282 @@
+/* layout.css — armazón: rail lateral, lienzo y pie */
+
+.armazon {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* Sin esto, min-width:auto hace que cada columna crezca hasta su contenido
+   y la página entera se desborde en pantallas angostas. */
+.armazon > * {
+  min-width: 0;
+}
+
+/* ---------- rail ---------- */
+
+.rail {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: calc(var(--u) * 8) calc(var(--u) * 5);
+  border-right: 1px solid var(--borde);
+  background: linear-gradient(to bottom, rgba(246, 248, 247, 0.9), rgba(246, 248, 247, 0.55));
+  backdrop-filter: blur(3px);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 8);
+}
+
+.marca {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(var(--u) * 2.5);
+}
+
+.marca__kanji {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 21px;
+  letter-spacing: 0.08em;
+  color: var(--shu);
+  line-height: 1;
+}
+
+.marca__texto {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+
+.marca__pie {
+  display: block;
+  font-family: var(--dato);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sumi-suave);
+  font-weight: 400;
+}
+
+.rail__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rail__enlace {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-left: 2px solid transparent;
+  padding: calc(var(--u) * 2) calc(var(--u) * 3);
+  cursor: pointer;
+  color: var(--sumi-medio);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color var(--transicion), border-color var(--transicion), background-color var(--transicion);
+}
+
+.rail__enlace:hover {
+  color: var(--sumi);
+  background-color: rgba(22, 32, 30, 0.035);
+}
+
+.rail__enlace--activo {
+  color: var(--sumi);
+  font-weight: 700;
+  border-left-color: var(--shu);
+  background-color: rgba(22, 32, 30, 0.045);
+}
+
+/* ---------- sesión, al pie del rail ---------- */
+
+.rail__sesion {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(var(--u) * 2);
+}
+
+.rail__usuario {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.rail__usuario-nombre {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rail__usuario-correo {
+  display: block;
+  font-family: var(--dato);
+  font-size: 10px;
+  color: var(--sumi-suave);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rail__lema {
+  font-family: var(--dato);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--sumi-suave);
+  border-top: 1px solid var(--borde);
+  padding-top: calc(var(--u) * 4);
+  margin-top: calc(var(--u) * 2);
+}
+
+/* ---------- lienzo ---------- */
+
+.lienzo {
+  padding: calc(var(--u) * 10) calc(var(--u) * 8) calc(var(--u) * 6);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.vista {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.seccion {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 6);
+}
+
+.seccion__cabecera {
+  margin-bottom: calc(var(--u) * 2);
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 3);
+}
+
+/* ---------- pie ---------- */
+
+.pie {
+  width: 100%;
+  max-width: 860px;
+  margin: calc(var(--u) * 12) auto 0;
+  border-top: 1px solid var(--borde);
+  padding-top: calc(var(--u) * 4);
+}
+
+.pie__contenido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--u) * 3);
+  font-family: var(--dato);
+  font-size: 11px;
+  color: var(--sumi-suave);
+}
+
+.pie__mensaje {
+  color: var(--shu);
+}
+
+.pie__acciones {
+  margin-left: auto;
+  display: flex;
+  gap: calc(var(--u) * 2);
+}
+
+/* ---------- adaptación a pantallas chicas ---------- */
+
+@media (max-width: 820px) {
+  .armazon {
+    grid-template-columns: 1fr;
+  }
+
+  .rail {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: auto;
+    flex-direction: column;
+    gap: calc(var(--u) * 3);
+    padding: calc(var(--u) * 4) calc(var(--u) * 4) 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--borde);
+    background: rgba(246, 248, 247, 0.96);
+  }
+
+  .marca {
+    flex-direction: row;
+    align-items: center;
+    gap: calc(var(--u) * 2.5);
+  }
+
+  .rail__lista {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0;
+    scrollbar-width: none;
+    margin: 0 calc(var(--u) * -4);
+    padding: 0 calc(var(--u) * 4);
+  }
+
+  .rail__lista::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rail__enlace {
+    white-space: nowrap;
+    width: auto;
+    border-left: 0;
+    border-bottom: 2px solid transparent;
+    padding: calc(var(--u) * 2) calc(var(--u) * 3);
+  }
+
+  .rail__enlace--activo {
+    border-left-color: transparent;
+    border-bottom-color: var(--shu);
+    background: none;
+  }
+
+  /* En horizontal la sesión se va a la esquina de la marca, y el lema estorba. */
+  .rail__sesion {
+    position: absolute;
+    top: calc(var(--u) * 4);
+    right: calc(var(--u) * 4);
+    margin-top: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: calc(var(--u) * 2);
+  }
+
+  .rail__usuario-correo,
+  .rail__lema {
+    display: none;
+  }
+
+  .rail__usuario-nombre {
+    max-width: 12ch;
+  }
+
+  .lienzo {
+    padding: calc(var(--u) * 7) calc(var(--u) * 4) calc(var(--u) * 6);
+  }
+}

@@ -1,0 +1,147 @@
+/* base.css — tokens, reinicio y tipografía
+ *
+ * Dirección visual: papel cuadriculado de taller (el gemba donde nació el
+ * kaizen) con sellos hanko en bermellón. La única nota fuerte de color es el
+ * sello.
+ */
+
+:root {
+  /* Color */
+  --papel: #E6EBE9;
+  --papel-alto: #F6F8F7;
+  --papel-hundido: #DDE4E1;
+  --linea-fina: rgba(22, 32, 30, 0.05);
+  --linea-gruesa: rgba(22, 32, 30, 0.09);
+  --borde: rgba(22, 32, 30, 0.13);
+  --sumi: #16201E;
+  --sumi-medio: #44514E;
+  --sumi-suave: #7C8986;
+  --shu: #C8402B;
+  --shu-hondo: #9E2E1D;
+  --shu-velo: rgba(200, 64, 43, 0.1);
+  --ai: #2B4C6F;
+
+  /* Tipografía */
+  --display: 'Zen Kaku Gothic New', 'Hiragino Sans', system-ui, sans-serif;
+  --cuerpo: 'Karla', system-ui, -apple-system, sans-serif;
+  --dato: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Ritmo */
+  --u: 4px;
+  --radio: 3px;
+  --rail: 208px;
+  --transicion: 160ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--cuerpo);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--sumi);
+  background-color: var(--papel);
+  background-image:
+    repeating-linear-gradient(to right, var(--linea-fina) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(to bottom, var(--linea-fina) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(to right, var(--linea-gruesa) 0 1px, transparent 1px 140px),
+    repeating-linear-gradient(to bottom, var(--linea-gruesa) 0 1px, transparent 1px 140px);
+}
+
+/* La versión anterior arrancaba con el body invisible y una clase `listo` que
+   ponía app.js al terminar de montar. React monta antes de pintar, así que ese
+   truco ya no hace falta: el fade lo hace el contenedor raíz. */
+#raiz {
+  animation: aparecer 320ms ease both;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 900;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Foco visible y consistente en todo el producto */
+:focus-visible {
+  outline: 2px solid var(--ai);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Rótulos y jerarquía de texto */
+.eyebrow {
+  font-family: var(--dato);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--shu);
+}
+
+.titulo {
+  font-size: clamp(28px, 4.4vw, 40px);
+  margin-top: calc(var(--u) * 2);
+}
+
+.subtitulo {
+  margin-top: calc(var(--u) * 2.5);
+  max-width: 56ch;
+  color: var(--sumi-medio);
+}
+
+.subseccion {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sumi-medio);
+  font-family: var(--dato);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
